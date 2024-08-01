@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress MavenModelInspection -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -14,12 +15,14 @@
     </properties>
 
     <dependencies>
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 &ndash;&gt;-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
 
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.openjfx/javafx-controls &ndash;&gt;-->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -32,6 +35,7 @@
             <version>1.0</version>
         </dependency>
 
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine &ndash;&gt;-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -47,7 +51,6 @@
                 <targetPath>lib/</targetPath>
             </resource>
         </resources>
-
         <plugins>
             <!-- Usual compilation -->
             <plugin>
@@ -56,16 +59,6 @@
                 <version>3.10.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-
-            <!-- Run java-fx app over Maven -->
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
-                <configuration>
-                    <mainClass>com.javarush.games.racer.RacerGame</mainClass>
                 </configuration>
             </plugin>
 
@@ -87,13 +80,12 @@
                             <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
                         </manifest>
                         <manifestEntries>
-                            <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
+                            <Rsc-Main-Class>com.javarush.games.racer.RoadMarking</Rsc-Main-Class>
                             <Class-Path>./</Class-Path>
                         </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -112,16 +104,28 @@
                 </executions>
             </plugin>
 
+            <!--            // пос-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
+                <version>2.22.2</version>
                 <configuration>
                     <excludes>
                         <exclude>StrangeTest</exclude>
                     </excludes>
                 </configuration>
             </plugin>
+
+            <!-- Run java-fx app over Maven -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>com.javarush.games.racer.RacerGame</mainClass>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
